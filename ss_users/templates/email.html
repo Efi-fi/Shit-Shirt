@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="margin-top: 5%">
+    <div class="row align-items-center">
+        <div class="col-4"></div>
+        <div class="col-4" style="background-image: linear-gradient(to right, slateblue, white); border-radius: 5%">
+            <form class="form-group" action="" method="post">
+                {% csrf_token %}
+                <label style="color: #181a00; font-family: fantasy; font-size: 100%">
+                    {% if user.confirm_email %}
+                    If you want to change your mail, enter a new mail, an email will come with an activation link.
+                    {% else %}
+                    A message has been sent to your email with a link to activate your account.
+                    {% endif %}
+                </label>
+                <div class="form-group">
+                    Email:
+                    <input name="email" type="email" class="form-control" placeholder={{request.user.email}}
+                           minlength="3">
+                </div>
+                <button type="submit" class="btn btn-dark my-2 my-sm-0" style="background-color: #232323;
+                border: none; margin-bottom: 10px"> Send mail-activator
+                </button>
+                <small class="form-text" style="color: #232323;"> If the letter did not arrive,
+                    then check the correctness of the mail and resend the message.
+                    Before activation, some functions will be unavailable.
+                </small>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

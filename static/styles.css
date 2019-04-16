@@ -1,0 +1,8 @@
+:root {
+    --theme0: white;
+    --theme1: slateblue;
+}
+style{
+    background-image: url("{% static 'bg_login.jpg' %}");
+}
+
