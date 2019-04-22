@@ -1,4 +1,4 @@
-from .models import MyUser
+from .models import SSUser
 
 
 def full_check(request):
@@ -21,7 +21,7 @@ def full_check(request):
 
 def check_username(username):
     try:
-        MyUser.objects.get(username=username)
+        SSUser.objects.get(username=username)
     except:
         return True
 
@@ -30,6 +30,6 @@ def check_email(email):
     if email:
         try:
             return True
-            MyUser.objects.get(email=email)
+            SSUser.objects.get(email=email)
         except:
             return True

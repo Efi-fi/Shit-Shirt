@@ -10,7 +10,7 @@ from . import logics, models, confirm_email
 
 def email_required(func):
     def wrapper(request, user_id=None):
-        if not models.MyUser.objects.get(username=request.user.username).confirm_email:
+        if not models.SSUser.objects.get(username=request.user.username).confirm_email:
             return email(request)
         else:
             return func(request, user_id)
@@ -23,7 +23,7 @@ def email_required(func):
 def user_page(request, user_id=None):
     if not user_id:
         user_id = request.user.id
-    user = models.MyUser.objects.get(id=user_id)
+    user = models.SSUser.objects.get(id=user_id)
     print(user.confirm_email)
 
     return render(request, 'user_page.html', {'user': user})
@@ -52,7 +52,7 @@ def logout(request):
 def registration(request):
     message = logics.full_check(request)
     if not message:
-        new_user = models.MyUser(username=request.POST['username'], email=request.POST['email'])
+        new_user = models.SSUser(username=request.POST['username'], email=request.POST['email'])
         new_user.set_password(request.POST['password1'])
         new_user.save()
         user = auth.authenticate(username=new_user.username, password=request.POST['password1'])
@@ -63,7 +63,7 @@ def registration(request):
 
 
 def email(request):
-    user = models.MyUser.objects.get(username=request.user.username)
+    user = models.SSUser.objects.get(username=request.user.username)
 
     if request.method == 'POST' and logics.check_email(request.POST['email']):
         print(request.POST)
@@ -78,7 +78,7 @@ def email(request):
 def activate_user_email(request, uid, token):
     try:
         uid = force_text(urlsafe_base64_decode(uid))
-        user = models.MyUser.objects.get(pk=uid)
+        user = models.SSUser.objects.get(pk=uid)
     except:
         user = None
     if user and confirm_email.account_activation_token.check_token(user, token):
