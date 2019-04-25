@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shirt, Comment
+from .models import Shirt
 
 
 # Register your models here.

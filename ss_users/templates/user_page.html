@@ -2,7 +2,24 @@
 
 {% block content %}
 <div>
-    User id: {{user.id}}
-    Confirm Email: {{user.confirm_email}}
+    <div class="container" style="margin-top: 10px">
+        HELLO, {{user.username}}
+        <br>
+        User id: {{user.id}}
+        <br>
+        Confirm Email: {{user.confirm_email}}
+        {% for shirt in shirts%}
+        <div class="row justify-content-lg-center">
+            <div class="col-6">
+                <div class="shirt-item">
+                    <label class="title">{{shirt.title}}</label>
+                    <br>
+                    <label> Rating {{shirt.rating}}</label>
+                    <label class="value">{{shirt.value}}$</label>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}

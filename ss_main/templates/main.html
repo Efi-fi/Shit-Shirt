@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    Efi-fi Inc.
+<div class="container" style="margin-top: 10px">
+    {% for three_shirt in shirts %}
+    <div class="row">
+        {% for shirt in three_shirt%}
+        <div class="col-4">
+            <div class="shirt-item">
+                <a href="{% url 'ss_main:shirt' shirt_id=shirt.id%}"> {{shirt.title}} </a>
+                <br>
+                <label> Rating {{shirt.rating}}</label>
+                <label class="value">{{shirt.value}} $</label>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
 </div>
 {% endblock content %}

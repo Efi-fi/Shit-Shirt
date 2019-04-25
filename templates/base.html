@@ -1,15 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="{{ STATIC_URL }} styles.css" rel='stylesheet' type='text/css'>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon"
           href="https://ae01.alicdn.com/kf/HTB1RHepOpXXXXbJaFXXq6xXFXXXB/poop-emoji-3d.jpg_640x640.jpg"
           type="image/jpg">
-        <title>Shit|Shirt</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Shit|Shirt</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background: slateblue">

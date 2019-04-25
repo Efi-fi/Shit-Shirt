@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.encoding import force_text
 
 from . import logics, models, confirm_email
+from ss_main.models import Shirt
 
 
 def email_required(func):
@@ -24,9 +25,9 @@ def user_page(request, user_id=None):
     if not user_id:
         user_id = request.user.id
     user = models.SSUser.objects.get(id=user_id)
-    print(user.confirm_email)
+    shirts = Shirt.objects.filter(creator=user)
 
-    return render(request, 'user_page.html', {'user': user})
+    return render(request, 'user_page.html', {'user': user, 'shirts': shirts})
 
 
 def login(request):

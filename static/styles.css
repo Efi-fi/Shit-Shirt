@@ -1,9 +1,25 @@
 :root {
-    --theme0: white;
-    --theme1: slateblue;
+    --theme0bg: white;
+    --theme0txt: black;
+    --theme1bg: slateblue;
+    --theme1bg2: #beafd0;
+    --theme1txt: white;
 }
-.{
-        background-image: url("{% static 'bg_login.jpg' %}");
-    }
 
+.shirt-item{
+    color: var(--theme1txt);
+    background-color: var(--theme1bg2);
+    border: 1px solid slateblue;
+    position: relative;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.value{
+    color: mediumvioletred;
+    font-size: 20px;
+    position: absolute;
+    bottom: 1%;
+}
 
